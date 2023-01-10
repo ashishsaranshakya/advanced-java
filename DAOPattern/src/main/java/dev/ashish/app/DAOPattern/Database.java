@@ -17,6 +17,10 @@ public class Database {
 		
 	}
 	
+	public Connection getConnection() {
+		return con;
+	}
+	
 	public void connect() throws SQLException {
 		con=DriverManager.getConnection(URI,"root","6210");
 	}
