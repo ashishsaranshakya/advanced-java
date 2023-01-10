@@ -1,9 +1,19 @@
 package dev.ashish.app.DAOPattern;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import java.sql.SQLException;
+
+public class App{
+    public static void main( String[] args ){
+    	
+    	Database db=Database.instance();
+    	
+    	try {
+    		db.connect();
+			db.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+        System.out.println( "Finished" );
     }
 }
