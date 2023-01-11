@@ -15,10 +15,10 @@ public class UserDao implements Dao<User>{
 			stm.setString(1, t.getName());
 			stm.executeUpdate();
 			stm.close();
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e){
 			throw new DaoException(e);
 		}
-		
 	}
 
 	@Override
@@ -35,7 +35,8 @@ public class UserDao implements Dao<User>{
 			}
 			
 			stm.close();
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			throw new DaoException(e);
 		}
 		return Optional.empty();
@@ -48,9 +49,11 @@ public class UserDao implements Dao<User>{
 			var stm=con.prepareStatement("update user set name=? where id=?");
 			stm.setString(1, t.getName());
 			stm.setInt(2, t.getId());
-			stm.executeUpdate();
+			if(stm.executeUpdate()!=0)
+				System.out.println("Updated");
 			stm.close();
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			throw new DaoException(e);
 		}
 	}
@@ -61,9 +64,11 @@ public class UserDao implements Dao<User>{
 		try {
 			var stm=con.prepareStatement("delete from user where id=?");
 			stm.setInt(1, t.getId());
-			stm.executeUpdate();
+			if(stm.executeUpdate()!=0)
+				System.out.println("Deleted");
 			stm.close();
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			throw new DaoException(e);
 		}
 	}
