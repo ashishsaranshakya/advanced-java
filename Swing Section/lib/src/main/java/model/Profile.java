@@ -1,4 +1,4 @@
-package dev.ashish.app.DAOPattern;
+package model;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -11,7 +11,7 @@ public class Profile {
     	String propsFile=String.format("/config/%s.%s.properties", name, env);
 //    	System.out.println(propsFile);
     	try {
-			props.load(App.class.getResourceAsStream(propsFile));
+			props.load(Profile.class.getResourceAsStream(propsFile));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
